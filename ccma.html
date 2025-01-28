@@ -10,17 +10,5 @@
         height="80vh"
       ></script>
     </div>
-
-    <!-- Scroll to Top on Route Change -->
-    <script>
-      window.addEventListener("message", (event) => {
-        if (event.data && event.data.event === "ROUTE_CHANGED") {
-          const iframe = document.querySelector("#myIframe"); // Select the iframe by ID
-          if (iframe && iframe.contentWindow) {
-            iframe.contentWindow.scrollTo(0, 0); // Scroll the content inside the iframe to the top
-          }
-        }
-      });
-    </script>
   </body>
 </html>
