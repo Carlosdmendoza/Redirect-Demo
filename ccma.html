@@ -1,27 +1,23 @@
 <html>
   <body>
     <script
-     src="https://events.blackthorn.io/loader" data-path="/en/0YqMu46/g/6ePn1EctZz?search=&amp;sortBy=date&amp;category=&amp;date=TODAY&amp;keywords="" autoresize="false" width="800px" padding-top= "150px" wrapper-class="" height="1200px">
-
-    </script>    
+      src="https://events.blackthorn.io/loader"
+      data-path="/en/0YqMu46/g/6ePn1EctZz?search=&amp;sortBy=date&amp;category=&amp;date=TODAY&amp;keywords="
+      autoresize="false"
+      width="800px"
+      height="1200px"
+      style="padding-top: 150px"
+    ></script>
     <!-- Scroll to Top on Route Change -->
     <script>
       window.addEventListener("message", (event) => {
-        // Check for route change
         if (event.data && event.data.event === "ROUTE_CHANGED") {
-          const iframe = document.querySelector("#myIframe");
+          const iframe = document.querySelector("#myIframe"); // Select the iframe by ID
           if (iframe && iframe.contentWindow) {
-            iframe.contentWindow.scrollTo(0, 0); // Scroll to top inside the iframe
+            iframe.contentWindow.scrollTo(0, 0); // Scroll the content inside the iframe to the top
           }
         }
-      });
-
-      // Wait for iframe to load and ensure it's ready for manipulation
-      document.getElementById("myIframe").addEventListener("load", function () {
-        console.log("Iframe loaded and ready");
       });
     </script>
   </body>
 </html>
-
-<!-- Iframe Script -->
