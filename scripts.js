@@ -6,7 +6,19 @@ document.getElementById("loadEvent").addEventListener("click", function () {
   // Construct the dynamic script source
   const domain = "dev.events.blackthorn.io";
   const scriptSrc = `https://${domain}/embed.js`;
-  const appSrc = `https://${domain}${path.startsWith("/") ? path : "/" + path}`; // Ensure the path starts with '/'
+  const appSrc = `https://${domain}${
+    path.startsWith("/") ? path : "/" + path
+  }?_vh=1152`; // Add vh=1152 parameter
+  const iframe = document.createElement("iframe");
+
+  // Set iframe properties
+  iframe.src = appSrc;
+  iframe.scrolling = "yes"; // Set scrolling to "yes"
+  iframe.classList.add("events-container"); // Assuming you want to apply the same class for styling purposes
+
+  // Explicitly set iframe height (1152px)
+  iframe.style.height = "1152px";
+  iframe.style.width = "100%"; // Make sure the iframe takes up the full width
 
   // Log the constructed URLs for debugging
   console.log("iFrame Source:", appSrc);
@@ -23,7 +35,9 @@ document.getElementById("loadEvent").addEventListener("click", function () {
       console.error("initializeEventsApp is not defined.");
     }
   };
+
   document.body.appendChild(script);
+  document.body.appendChild(iframe); // Add the iframe to the body
 });
 
 // Function to initialize the EventsApp
