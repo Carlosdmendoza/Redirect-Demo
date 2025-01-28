@@ -1,0 +1,25 @@
+<!-- Iframe Script -->
+<script
+  id="myIframe"
+  src="https://events.blackthorn.io/loader"
+  data-path="/en/0YqMu46/g/6ePn1EctZz?search=&amp;sortBy=date&amp;category=&amp;date=TODAY&amp;keywords="
+  style="max-height: 800px"
+></script>
+
+<!-- Scroll to Top on Route Change -->
+<script>
+  window.addEventListener("message", (event) => {
+    // Check for route change
+    if (event.data && event.data.event === "ROUTE_CHANGED") {
+      const iframe = document.querySelector("#myIframe");
+      if (iframe && iframe.contentWindow) {
+        iframe.contentWindow.scrollTo(0, 0); // Scroll to top inside the iframe
+      }
+    }
+  });
+
+  // Wait for iframe to load and ensure it's ready for manipulation
+  document.getElementById("myIframe").addEventListener("load", function () {
+    console.log("Iframe loaded and ready");
+  });
+</script>
