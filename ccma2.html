@@ -1,17 +1,37 @@
 <html>
+  <head>
+    <script src="https://events.blackthorn.io/embed.js"></script>
+  </head>
   <body>
-    <script
-      src="https://events.blackthorn.io/loader"
-      data-path="/en/0YqMu46/g/6ePn1EctZz"
-    ></script>
+    <div
+      class="events-container"
+      style="height: 1200px; overflow-y: auto"
+    ></div>
 
-    <!-- Scroll to Top on Route Change -->
     <script>
-      window.addEventListener("message", (event) => {
-        if (event.data && event.data.event === "ROUTE_CHANGED") {
-          window.scrollTo(0, 0); // Scroll the parent page to the top
-        }
+      var app = new EventsApp({
+        orgId: "0YqMu46",
+        path: "/g/6ePn1EctZz",
+        listeners: [
+          {
+            event: "APP_READY",
+            handler: function () {
+              console.log("Blackthorn Events is ready");
+            },
+          },
+          {
+            event: "ROUTE_CHANGED",
+            handler: function (params) {
+              console.log("Route changed:", params);
+
+              // Scroll the embedded events container to the top
+              document.querySelector(".events-container").scrollTo(0, 0);
+            },
+          },
+        ],
       });
+
+      app.mount(".events-container");
     </script>
   </body>
 </html>
