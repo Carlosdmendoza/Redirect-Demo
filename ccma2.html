@@ -20,8 +20,9 @@
 
     <div class="content">
       <script
+        id="btLoader"
         src="https://events.blackthorn.io/loader"
-        data-path="/en/0YqMu46/g/6ePn1EctZz?search=&amp;sortBy=date&amp;category=&amp;date=TODAY&amp;keywords="
+        data-path="/en/0YqMu46/g/6ePn1EctZz?search=&sortBy=date&category=&date=TODAY&keywords="
         autoresize="false"
         width="100%"
         height="100%"
@@ -30,5 +31,14 @@
     </div>
 
     <div style="height: 500px">This is a sample banner</div>
+
+    <script>
+      window.addEventListener("message", function (event) {
+        if (event.data && event.data.event === "ROUTE_CHANGED") {
+          console.log("Route changed! Scrolling to top.");
+          window.scrollTo({ top: 0, behavior: "smooth" }); // Scroll parent page to top
+        }
+      });
+    </script>
   </body>
 </html>
