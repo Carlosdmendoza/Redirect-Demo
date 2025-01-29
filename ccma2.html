@@ -9,40 +9,12 @@
             src="https://events.blackthorn.io/loader"
             data-path="/en/0YqMu46/g/6ePn1EctZz?search=&amp;sortBy=date&amp;category=&amp;date=TODAY&amp;keywords="
             autoresize="false"
-            width="800px"
+            width="100%"
             height="90vh"
+            fullscreen="true"
           ></script>
         </div>
       </body>
     </html>
   </head>
-  <body>
-    <div class="events-container" style="height: 90vh"></div>
-
-    <script>
-      var app = new EventsApp({
-        orgId: "0YqMu46",
-        path: "/g/6ePn1EctZz",
-        listeners: [
-          {
-            event: "APP_READY",
-            handler: function () {
-              console.log("Blackthorn Events is ready");
-            },
-          },
-          {
-            event: "ROUTE_CHANGED",
-            handler: function (params) {
-              console.log("Route changed:", params);
-
-              // Scroll the embedded events container to the top
-              document.querySelector(".events-container").scrollTo(0, 0);
-            },
-          },
-        ],
-      });
-
-      app.mount(".events-container");
-    </script>
-  </body>
 </html>
