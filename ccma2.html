@@ -31,14 +31,4 @@
     </div>
 
     <div style="height: 500px">This is a sample banner</div>
-
-    <script>
-      window.addEventListener("message", function (event) {
-        if (event.data && event.data.event === "ROUTE_CHANGED") {
-          console.log("Route changed! Scrolling to top.");
-          window.scrollTo({ top: 0, behavior: "smooth" }); // Scroll parent page to top
-        }
-      });
-    </script>
-  </body>
 </html>
