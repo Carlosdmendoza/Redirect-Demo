@@ -6,7 +6,8 @@
         overflow: hidden;
         bottom: 150px;
         width: 100%;
-        position: absolute;
+        position: fixed;
+        height: 90vh;
       }
 
       .content > iframe {
@@ -16,8 +17,8 @@
     </style>
   </head>
   <body>
-    <div style="height: 150px">This is a sample banner</div>
-
+    <div style="height: 150px">This is a sample banner header</div>
+    <div fillup style= "height: 90vh"></div>
     <div class="content" style="height:90vh">
       <script
         id="btLoader"
@@ -30,5 +31,5 @@
       ></script>
     </div>
 
-    <div style="height: 500px">This is a sample banner</div>
+    <div style="height: 500px">This is a sample banner footer</div>
 </html>
