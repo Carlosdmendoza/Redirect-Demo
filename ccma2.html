@@ -28,7 +28,18 @@
               handler: function(params) {
               console.log(params);
                // Scroll the entire page to the top
-              window.scrollTo({ top: 0, behavior: 'smooth' });
+            //  window.scrollTo({ top: 0, behavior: 'smooth' });
+              // Find the iframe or container
+          const container = document.querySelector('.content'); 
+
+              if (container) {
+                // Scroll the page so the container starts at the top
+                const containerTop = container.getBoundingClientRect().top + window.scrollY;
+                window.scrollTo({ top: containerTop, behavior: 'smooth' });
+
+                // Make sure the container fills the viewport
+                container.style.height = '100vh';
+              }
             }
             },
             {
