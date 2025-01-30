@@ -7,15 +7,47 @@
     <div style="height: 250px; background-color: rgb(114, 199, 24);">This is a sample banner header</div>
     
     <div class="content" style="height:90vh">
-      <script
-        id="btLoader"
-        src="https://events.blackthorn.io/loader"
-        data-path="/en/0YqMu46/g/6ePn1EctZz?search=&sortBy=date&category=&date=TODAY&keywords="
-        autoresize="false"
-        width="100%"
-        height="90vh"
-        fullscreen="true"
-      ></script>
+
+      <script src=https://events.blackthorn.io/embed.js></script>
+      <script>
+        // The minimal code to create an embed events in your page
+        var app = new EventsApp({
+        orgId: '0YqMu46',
+        path: "/g/6ePn1EctZz?search=&sortBy=date&category=&date=TODAY&keywords=",
+        listeners: [
+    {
+      event: 'APP_READY',
+      handler: function() {
+        console.log('APP READY');
+      }
+    },
+    {
+      event: 'ROUTE_CHANGED',
+      handler: function(params) {
+        console.log(params);
+      }
+    },
+    {
+      event: 'CONTENT_SIZE_CHANGED',
+      handler: function(params) {
+        // you can resize the container according to params.height
+        // so that the container will grow with the events app content
+        console.log(params);
+      }
+    },
+    {
+      event: 'FORM_SUBMITTED',
+      handler: function(params) {
+        // you can get attendee data when the form is submited
+        console.log(params);
+        }
+      }
+    ]
+  });
+      app.mount('.events-container');
+        
+      </script>
+
     </div>
     <div fillup style= "height: 90vh; background-color: blue;"></div>
 
