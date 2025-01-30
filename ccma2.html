@@ -74,8 +74,9 @@
             container.style.height = params.height + 'px';
           }
 
+          const content = document.querySelector('.content');
           if (content) {
-            content.style.height = params.height + 'px';
+            content.style.minHeight = params.height + 'px';
           }
         }
       },
