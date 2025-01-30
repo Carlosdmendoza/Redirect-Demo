@@ -67,15 +67,16 @@
       {
         event: 'CONTENT_SIZE_CHANGED',
         handler: function(params) {
-          console.log(params);
+          console.log("Content size changed:", params);
+
+          // Get the .events-container element
+          const container = document.querySelector('.events-container');
+          if (container) {
+            // Apply the dynamic height
+            container.style.height = params.height + 'px';
+          }
         }
       },
-      {
-        event: 'FORM_SUBMITTED',
-        handler: function(params) {
-          console.log(params);
-        }
-      }
     ]
   });
 
@@ -86,6 +87,7 @@
     <div fillup style= "height: 90vh; background-color: blue;"></div>
 
     <script>
+      /*
       document.getElementById('btLoader').addEventListener('Route_CHANGED', function() {
         document.querySelector('.content').style.height = 'auto';
     
@@ -94,7 +96,7 @@
         if (parentContainer) {
           parentContainer.scrollTo({ top: 250, behavior: 'smooth' });
         }
-      });
+      });*/
     </script>
     
 
