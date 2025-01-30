@@ -75,6 +75,10 @@
             // Apply the dynamic height
             container.style.height = params.height + 'px';
           }
+
+          if (content) {
+            content.style.minHeight = params.height + 'px';
+          }
         }
       },
     ]
