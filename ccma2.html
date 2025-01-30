@@ -48,7 +48,7 @@
 
           routeChangeCount++; // Increment on each route change
 
-          if (routeChangeCount === 1) {
+          if (routeChangeCount <= 2) {
             console.log('Ignoring first ROUTE_CHANGED event');
             return; // Ignore the first route change
           }
