@@ -12,7 +12,7 @@
       <script src=https://events.blackthorn.io/embed.js scrolling="no" style="width: 100%; border:none; overflow: hidden;"></script>
 
 <script>
-  function resizeIframe() {
+ /* function resizeIframe() {
     const iframe = document.getElementById('eventFrame');
     if (iframe) {
       iframe.style.height = iframe.contentWindow.document.body.scrollHeight + "px";
@@ -23,7 +23,7 @@
   document.getElementById('eventFrame').onload = function() {
     resizeIframe();
     setInterval(resizeIframe, 500); // Periodically check for content changes
-  };
+  }; */
 </script>
 
 <script>
@@ -33,6 +33,12 @@
     orgId: '0YqMu46',
     path: "/g/6ePn1EctZz?search=&sortBy=date&category=&date=TODAY&keywords=",
     listeners: [
+      {
+        event: 'APP_READY',
+        handler: function() {
+          console.log('APP READY');
+        }
+      },
       {
         event: 'ROUTE_CHANGED',
         handler: function(params) {
@@ -68,9 +74,8 @@
             container.style.height = params.height + 'px';
           }
 
-        
           if (content) {
-            content.style.minHeight = (params.height + 50) + 'px'; // Ensure content expands
+            content.style.height = params.height + 'px';
           }
         }
       },
