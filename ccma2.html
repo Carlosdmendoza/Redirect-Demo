@@ -7,7 +7,7 @@
     <div style="height: 110px; background-color: rgb(114, 199, 24);">This is a sample banner header</div>
     
     <div class= "content" style="min-height: 100vh;">
-      <div class="events-container" style="height: fit-content;"></div>
+      <div class="events-container" style="min-height: 100vh;"></div>
 
       <script src=https://events.blackthorn.io/embed.js scrolling="no" style="width: 100%; border:none; overflow: hidden;"></script>
 
@@ -32,15 +32,7 @@
   var app = new EventsApp({
     orgId: '0YqMu46',
     path: "/g/6ePn1EctZz?search=&sortBy=date&category=&date=TODAY&keywords=",
-    height: '100%',
-    width: '100%',
     listeners: [
-      {
-        event: 'APP_READY',
-        handler: function() {
-          console.log('APP READY');
-        }
-      },
       {
         event: 'ROUTE_CHANGED',
         handler: function(params) {
@@ -76,8 +68,9 @@
             container.style.height = params.height + 'px';
           }
 
+        
           if (content) {
-            content.style.minHeight = params.height + 'px';
+            content.style.minHeight = (params.height + 50) + 'px'; // Ensure content expands
           }
         }
       },
@@ -89,20 +82,6 @@
 
     </div>
     <div fillup style= "height: 90vh; background-color: blue;"></div>
-
-    <script>
-      /*
-      document.getElementById('btLoader').addEventListener('Route_CHANGED', function() {
-        document.querySelector('.content').style.height = 'auto';
     
-        // Scroll the parent container to the top
-        const parentContainer = document.querySelector('.content'); 
-        if (parentContainer) {
-          parentContainer.scrollTo({ top: 250, behavior: 'smooth' });
-        }
-      });*/
-    </script>
-    
-
     <div style="height: 500px">This is a sample banner footer</div>
 </html>
