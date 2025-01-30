@@ -1,24 +1,11 @@
 <html>
   <head>
-    <style>
-      .content {
-        top: 65px;
-        overflow: hidden;
-        bottom: 150px;
-        width: 100%;
-        position: relative;
-        height: 90vh;
-      }
 
-      .content > iframe {
-        height: 100%;
-        width: 100%;
-      }
-    </style>
   </head>
   <body>
-    <div style="height: 150px">This is a sample banner header</div>
-    <div fillup style= "height: 90vh"></div>
+    <div style="height: 150px; background-color: red;">This is a sample banner header</div>
+    <div style="height: 250px; background-color: rgb(114, 199, 24);">This is a sample banner header</div>
+    
     <div class="content" style="height:90vh">
       <script
         id="btLoader"
@@ -30,6 +17,20 @@
         fullscreen="true"
       ></script>
     </div>
+    <div fillup style= "height: 90vh; background-color: blue;"></div>
+
+    <script>
+      document.getElementById('btLoader').addEventListener('Route_CHANGED', function() {
+        document.querySelector('.content').style.height = 'auto';
+    
+        // Scroll the parent container to the top
+        const parentContainer = document.querySelector('.content'); 
+        if (parentContainer) {
+          parentContainer.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+      });
+    </script>
+    
 
     <div style="height: 500px">This is a sample banner footer</div>
 </html>
