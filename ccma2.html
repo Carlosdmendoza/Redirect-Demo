@@ -26,55 +26,62 @@
   };
 </script>
 
-      <script>
-        var app = new EventsApp({
-          orgId: '0YqMu46',
-          path: "/g/6ePn1EctZz?search=&sortBy=date&category=&date=TODAY&keywords=",
-          height: '100%',
-          width: '100%',
-          listeners: [
-            {
-              event: 'APP_READY',
-              handler: function() {
-                console.log('APP READY');
-              }
-            },
-            {
-              event: 'ROUTE_CHANGED',
-              handler: function(params) {
-              console.log(params);
-               // Scroll the entire page to the top
-            //  window.scrollTo({ top: 0, behavior: 'smooth' });
-              // Find the iframe or container
+<script>
+  let routeChangeCount = 0; // Counter for route changes
+
+  var app = new EventsApp({
+    orgId: '0YqMu46',
+    path: "/g/6ePn1EctZz?search=&sortBy=date&category=&date=TODAY&keywords=",
+    height: '100%',
+    width: '100%',
+    listeners: [
+      {
+        event: 'APP_READY',
+        handler: function() {
+          console.log('APP READY');
+        }
+      },
+      {
+        event: 'ROUTE_CHANGED',
+        handler: function(params) {
+          console.log(params);
+
+          routeChangeCount++; // Increment on each route change
+
+          if (routeChangeCount === 1) {
+            console.log('Ignoring first ROUTE_CHANGED event');
+            return; // Ignore the first route change
+          }
+
+          // Scroll the page to bring the iframe to the top
           const container = document.querySelector('.content'); 
+          if (container) {
+            const containerTop = container.getBoundingClientRect().top + window.scrollY;
+            window.scrollTo({ top: containerTop, behavior: 'smooth' });
 
-              if (container) {
-                // Scroll the page so the container starts at the top
-                const containerTop = container.getBoundingClientRect().top + window.scrollY;
-                window.scrollTo({ top: containerTop, behavior: 'smooth' });
+            // Ensure the container fills the viewport
+            container.style.height = '100vh';
+          }
+        }
+      },
+      {
+        event: 'CONTENT_SIZE_CHANGED',
+        handler: function(params) {
+          console.log(params);
+        }
+      },
+      {
+        event: 'FORM_SUBMITTED',
+        handler: function(params) {
+          console.log(params);
+        }
+      }
+    ]
+  });
 
-                // Make sure the container fills the viewport
-                container.style.height = '100vh';
-              }
-            }
-            },
-            {
-              event: 'CONTENT_SIZE_CHANGED',
-              handler: function(params) {
-                console.log(params);
-              }
-            },
-            {
-              event: 'FORM_SUBMITTED',
-              handler: function(params) {
-                console.log(params);
-              }
-            }
-          ]
-        });
-      
-        app.mount('.events-container');
-      </script>
+  app.mount('.events-container');
+</script>
+
     </div>
     <div fillup style= "height: 90vh; background-color: blue;"></div>
 
