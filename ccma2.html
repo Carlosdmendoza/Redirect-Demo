@@ -9,7 +9,23 @@
     <div class="content" style="height:90vh">
       <div class="events-container"></div>
 
-      <script src=https://events.blackthorn.io/embed.js></script>
+      <script src=https://events.blackthorn.io/embed.js scrolling="no" style="width: 100%; border:none; overflow: hidden;"></script>
+
+<script>
+  function resizeIframe() {
+    const iframe = document.getElementById('eventFrame');
+    if (iframe) {
+      iframe.style.height = iframe.contentWindow.document.body.scrollHeight + "px";
+    }
+  }
+
+  // Listen for iframe load and content changes
+  document.getElementById('eventFrame').onload = function() {
+    resizeIframe();
+    setInterval(resizeIframe, 500); // Periodically check for content changes
+  };
+</script>
+
       <script>
         var app = new EventsApp({
           orgId: '0YqMu46',
