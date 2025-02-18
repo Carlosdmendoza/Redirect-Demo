@@ -3,21 +3,19 @@
     <title>Advance Embedding</title>
   </head>
   <body>
-    <h2>Advance Embedding!</h2>
+    <h2>Advance Embedding</h2>
     <div class="events-container" style="height: 100vh; width: 100%"></div>
 
     <!--This is where the iFrame gets called-->
     <script src="https://events.blackthorn.io/embed.js"></script>
     <script>
-      window.onload = function () {
-        var app = new EventsApp({
-          orgId: "3itLbC6",
-          path: "/g/ZZ8AC6qtdC",
-          height: "100%",
-          width: "100%",
-        });
-        app.mount(".events-container");
-      };
+      var app = new EventsApp({
+        orgId: "3itLbC6",
+        path: "/g/ZZ8AC6qtdC",
+        height: "100%",
+        width: "100%",
+      });
+      app.mount(".events-container");
     </script>
   </body>
 </html>
