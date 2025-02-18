@@ -1,21 +1,53 @@
-<html>
-  <head>
-    <title>Advance Embedding</title>
-  </head>
+<script>
+    function toggleMenu() {
+      document.querySelector(".nav").classList.toggle("active");
+    }
+  </script>
   <body>
-    <h2>Advance Embedding</h2>
-    <div class="events-container" style="height: 100vh; width: 100%"></div>
-
-    <!--This is where the iFrame gets called-->
-    <script src="https://events.blackthorn.io/embed.js"></script>
-    <script>
-      var app = new EventsApp({
-        orgId: "3itLbC6",
-        path: "/g/ZZ8AC6qtdC",
-        height: "100%",
-        width: "100%",
-      });
-      app.mount(".events-container");
-    </script>
+  
+  
+  <header class="header">
+    <link rel="stylesheet" href="home.css" />
+    <div class="logo">
+      <img
+        src="https://4m4you.com/wp-content/uploads/2020/06/logo-placeholder.png"
+        alt="Logo"
+      />
+    </div>
+    <div class="burger" onclick="toggleMenu()">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    <nav class="nav">
+      <a href="#">Home</a>
+      <a href="#">About</a>
+      <a href="#">Services</a>
+      <a href="#">Contact</a>
+    </nav>
+  </header>
+  <div class= "content" style="min-height: 100vh;">
+      <div class="events-container" style="min-height: 100vh;"></div>
+      
+      <!--This is where the iFrame gets called-->
+      <script src=https://events.blackthorn.io/embed.js></script>
+      <script>
+    
+        var app = new EventsApp({
+          orgId: '5e53zvb7',
+          path: "g/7BBXYj8cW9?date=ALL,ALL",
+          height: "100%",
+          width: "100%",
+  
+          
+        });
+        // This indicates where the iFrame will be mounted
+        app.mount('.events-container');
+  
+      </script>
+  
+    </div>
   </body>
-</html>
+  <footer style="height: 100px; background-color:#f8f8f8; margin-top: 20px; padding: 20px;">
+      <div class="p">Your Footer Goes Here </div>
+  </footer>
