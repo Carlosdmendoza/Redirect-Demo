@@ -39,19 +39,12 @@
       the parent container. That is later updated by a variable as page changes.
       */
       var app = new EventsApp({
-        orgId: '0YqMu46',
-        path: "/g/6ePn1EctZz?search=&sortBy=date&category=&date=TODAY&keywords=",
+        orgId: '5e53zvb7',
+        path: "g/7BBXYj8cW9?date=ALL,ALL",
         height: "100%",
         width: "100%",
 
         listeners: [
-          {
-            event: 'APP_READY',
-            handler: function() {
-              // We can remove the log below as well
-              console.log('APP READY');
-            }
-          },
           {
             event: 'ROUTE_CHANGED',
             handler: function(params) {
@@ -62,9 +55,6 @@
               // The reason for this is so that the page doesn't scroll to the iFrame on page load.
               //  (There's two route changes before the iFrame actually loads)
               if (routeChangeCount <= 2) {
-
-                //We can remove the log below as well
-                console.log('Ignoring first ROUTE_CHANGED event');
                 return; 
               }
 
@@ -106,7 +96,7 @@
           },
         ]
       });
-
+      // This indicates where the iFrame will be mounted
       app.mount('.events-container');
 
     </script>
