@@ -1,0 +1,142 @@
+.parent-container {
+    padding-left: 5px;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+  }
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100px;
+    padding: 0 20px;
+    background-color: #f8f8f8;
+    border-bottom: 2px solid #ddd;
+    position: relative;
+  }
+  .logo img {
+    height: auto;
+    width: 200px;
+  }
+  .burger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+  }
+  .burger div {
+    width: 30px;
+    height: 4px;
+    background-color: #333;
+    margin: 5px;
+  }
+  .nav {
+    display: flex;
+    gap: 20px;
+  }
+  .nav a {
+    text-decoration: none;
+    color: #333;
+    font-size: 18px;
+  }
+  @media (max-width: 768px) {
+    .header {
+      flex-direction: row;
+      height: auto;
+      padding: 10px;
+      text-align: center;
+    }
+    .logo img {
+      height: auto;
+    }
+    .burger {
+      display: flex;
+    }
+    .nav {
+      display: none;
+      flex-direction: column;
+      gap: 10px;
+      padding: 10px 0;
+    }
+    .nav.active {
+      display: flex;
+    }
+
+    
+  }
+
+  .use-case {
+    margin: 20px;
+    max-width: 100%;
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+.accordion {
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    padding: 15px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 18px;
+    font-weight: bold;
+    transition: 0.4s;
+    border-radius: 8px 8px 0 0;
+}
+.active, .accordion:hover {
+    background-color: #0056b3;
+}
+.panel {
+    padding: 20px;
+    display: none;
+    background-color: #f9f9f9;
+    border-radius: 0 0 8px 8px;
+}
+pre {
+    background: #2d2d2d;
+    color: #f8f8f2;
+    padding: 10px;
+    border-radius: 5px;
+    overflow-x: auto;
+    position: relative;
+}
+.copy-btn {
+    top: 10px;
+    right: 10px;
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+}
+.copy-btn:hover {
+    background: #0056b3;
+}
+iframe {
+    width: 100%;
+    height: 250px;
+    border: 1px solid #ddd;
+    margin-top: 10px;
+    border-radius: 5px;
+}
+.btn {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 15px;
+    background-color: #28a745;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+}
+.btn:hover {
+    background-color: #218838;
+}

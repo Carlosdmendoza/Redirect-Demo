@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simple Header</title>
+    <link rel="stylesheet" href="home.css">
+</head>
+
+    <script>
+      function toggleMenu() {
+        document.querySelector(".nav").classList.toggle("active");
+      }
+
+      function toggleAccordion(index) {
+            var panels = document.getElementsByClassName("panel");
+            if (panels[index].style.display === "block") {
+                panels[index].style.display = "none";
+            } else {
+                panels[index].style.display = "block";
+            }
+        }
+
+        function copyCode(button) {
+    var codeBlock = button.previousElementSibling.textContent.trim();
+    navigator.clipboard.writeText(codeBlock).then(() => {
+        button.textContent = "Copied!";
+        setTimeout(() => button.textContent = "Copy", 2000);
+    }).catch(err => console.error("Copy failed:", err));
+}
+
+    </script>
+  </head>
+  <body>
+    <header class="header">
+      <div class="logo">
+        <img
+          src="https://4m4you.com/wp-content/uploads/2020/06/logo-placeholder.png"
+          alt="Logo"
+        />
+      </div>
+      <div class="burger" onclick="toggleMenu()">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <nav class="nav">
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Services</a>
+        <a href="#">Contact</a>
+      </nav>
+    </header>
+    <div class="parent-container">
+      <h2>This page is simulating your company website</h2>
+ 
+
+      <section class="use-case">
+        <button class="accordion" onclick="toggleAccordion(0)">Use Case 1</button>
+        <div class="panel">
+            <p>Description for use case 1</p>
+            <p><strong>Code Needed:</strong></p>
+            <div style="position: relative;">
+                <pre><code>&lt;iframe src="https://example.com" width="600" height="400"&gt;&lt;/iframe&gt;</code></pre>
+            </div>
+            <a href="https://example.com" target="_blank" class="btn">See it in Action</a>
+            <div class="events-container" style="min-height: 100vh;"></div>
+      
+            <!--This is where the iFrame gets called-->
+            <script src=https://events.blackthorn.io/embed.js></script>
+            <script>
+              let routeChangeCount = 0; // Counter for route changes
+              /* 
+              We are defining org id whoch is the first parameter of event group url 
+              The reason for height and width parameters is to ensure the iFrame take all the available space on
+              the parent container. That is later updated by a variable as page changes.
+              */
+              var app = new EventsApp({
+                orgId: '0YqMu46',
+                path: "/g/6ePn1EctZz?search=&sortBy=date&category=&date=TODAY&keywords=",
+                height: "100%",
+                width: "100%",
+      
+                listeners: [
+                  {
+                    event: 'APP_READY',
+                    handler: function() {
+                      // We can remove the log below as well
+                      console.log('APP READY');
+                    }
+                  },
+                  {
+                    event: 'ROUTE_CHANGED',
+                    handler: function(params) {
+                      console.log(params);
+      
+                      routeChangeCount++; // Increment on each route change
+      
+                      // The reason for this is so that the page doesn't scroll to the iFrame on page load.
+                      //  (There's two route changes before the iFrame actually loads)
+                      if (routeChangeCount <= 2) {
+      
+                        //We can remove the log below as well
+                        console.log('Ignoring first ROUTE_CHANGED event');
+                        return; 
+                      }
+      
+                      // Scroll the page to bring the iframe to the top
+                      const container = document.querySelector('.content'); 
+                      //What this does is that when route changes it will move the focus to the top of the iFrame
+                      if (container) {
+                        const containerTop = container.getBoundingClientRect().top + window.scrollY;
+                        window.scrollTo({ top: containerTop, behavior: 'smooth' });
+      
+                        // Ensure the container fills the viewport
+                        container.style.height = '100vh';
+                      }
+                    }
+                  },
+                  {
+                    // This event listener emits two parameters, width and height that we can use to resize the iFrame
+                    event: 'CONTENT_SIZE_CHANGED',
+                    handler: function(params) {
+                      //The log below can be removed.
+                      console.log("Content size changed:", params);
+                      //What this does is adjust the size of the parent container to match the size of the iframe
+                      // Reason for that is to avoid a duplicated scroll bar
+      
+                      // We are targetting here the events-container (Where the iframe is)
+                      const container = document.querySelector('.events-container');
+                      if (container) {
+                        // Apply the dynamic height
+                        container.style.height = params.height + 'px';
+                      }
+      
+                    // This is the parent container where the events-container is.
+                      const content = document.querySelector('.content');
+                      if (content) {
+                        content.style.minHeight = params.height + 'px';
+                        content.style.height = params.height + 'px';
+                      }
+                    }
+                  },
+                ]
+              });
+      
+              app.mount('.events-container');
+      
+            </script>
+      
+          </div>
+        </div>
+    </section>
+  </body>
+</html>
