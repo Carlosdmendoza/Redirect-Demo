@@ -1,10 +1,10 @@
 document.getElementById("loadEvent").addEventListener("click", function () {
   const orgId = document.getElementById("orgId").value.trim();
   const path = document.getElementById("path").value.trim();
-  const instanceUrl = "https://dev.events.blackthorn.io"; // Your instance URL
+  const instanceUrl = "https://events.blackthorn.io"; // Your instance URL
 
   // Construct the dynamic script source
-  const domain = "dev.events.blackthorn.io";
+  const domain = "events.blackthorn.io";
   const scriptSrc = `https://${domain}/embed.js`;
   const appSrc = `https://${domain}${
     path.startsWith("/") ? path : "/" + path
