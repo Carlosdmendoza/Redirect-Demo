@@ -76,6 +76,7 @@ function onFormSubmitted(params) {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(params), // or JSON.stringify(params.data) if you want just the form fields
+    mode: "no-cors",
   })
     .then((res) => {
       console.log("Webhook response status:", res.status);
