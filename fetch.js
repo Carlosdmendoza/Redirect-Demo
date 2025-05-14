@@ -50,7 +50,7 @@ function initializeEventsApp(orgId, path, instanceUrl) {
         event: "FORM_SUBMITTED",
         handler: function (params) {
           logEvent("FORM_SUBMITTED: " + JSON.stringify(params));
-          onFormSubmitted(); // Call the function to handle the submission
+          onFormSubmitted(params); // Call the function to handle the submission
         },
       },
     ],
@@ -85,7 +85,6 @@ function onFormSubmitted(params) {
       console.error("Error sending data to Webhook.site:", err);
     });
 }
-console.log("Sending form data to MCP (Webhook):", JSON.stringify(params));
 
 // Function to log events to the event log
 function logEvent(message) {
