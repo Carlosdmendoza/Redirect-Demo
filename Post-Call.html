@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blackthorn Events Form Submitted</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <h1>Form Submitted Listener</h1>
+    <div class="input-container">
+      <label for="orgId">Organization ID:</label>
+      <input
+        type="text"
+        id="orgId"
+        placeholder="Enter Organization ID (e.g., 3itLbC6)"
+      />
+      <label for="path">Path:</label>
+      <input
+        type="text"
+        id="path"
+        placeholder="Enter Path (e.g., /g/ZZ8AC6qtdC)"
+      />
+      <button id="loadEvent">Load Event</button>
+    </div>
+    <div class="events-container"></div>
+    <div class="log-output">
+      <h2>Event Log</h2>
+      <pre id="eventLog"></pre>
+    </div>
+    <script src="fetch.js"></script>
+  </body>
+</html>
