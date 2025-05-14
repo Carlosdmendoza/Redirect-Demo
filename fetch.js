@@ -68,14 +68,14 @@ function initializeEventsApp(orgId, path, instanceUrl) {
 
 // Function to handle the form submitted event
 function onFormSubmitted(params) {
-  console.log("Sending form data to MCP (Webhook):", params);
+  console.log("Sending form data to MCP (Webhook):", JSON.stringify(params));
 
   fetch("https://webhook.site/58cba93a-c3e3-4427-96ae-74b20a66ba29", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(params), // or JSON.stringify(params.data) if you want just the form fields
+    body: "This is some test data" + JSON.stringify(params), // or JSON.stringify(params.data) if you want just the form fields
     mode: "no-cors",
   })
     .then((res) => {
@@ -85,6 +85,7 @@ function onFormSubmitted(params) {
       console.error("Error sending data to Webhook.site:", err);
     });
 }
+console.log("Sending form data to MCP (Webhook):", JSON.stringify(params));
 
 // Function to log events to the event log
 function logEvent(message) {
